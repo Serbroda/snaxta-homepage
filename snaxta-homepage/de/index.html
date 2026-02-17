@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snaxta – Entdecke die besten Gerichte</title>
+  <meta name="description" content="Snaxta ist die App, mit der du Gerichte bewertest, entdeckst und mit Freunden teilst.">
+  <meta property="og:title" content="Snaxta – Entdecke die besten Gerichte">
+  <meta property="og:description" content="Bewerte Gerichte, entdecke Neues und teile deine Food-Erlebnisse.">
+  <meta property="og:image" content="https://snaxta.de/assets/img/app-icon.png">
+  <meta property="og:url" content="https://snaxta.de/de/">
+  <link rel="alternate" hreflang="en" href="https://snaxta.de/en/">
+  <link rel="alternate" hreflang="de" href="https://snaxta.de/de/">
+  <link rel="icon" type="image/png" href="/assets/img/app-icon.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#FF5252', 'brand-end': '#FF9A5C' } } }
+    }
+  </script>
+  <style>
+    .gradient-text { background: linear-gradient(135deg, #FF5252, #FF9A5C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-bg { background: linear-gradient(135deg, #FF5252, #FF9A5C); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/de/" class="text-xl font-bold gradient-text">Snaxta</a>
+      <div class="flex items-center gap-6 text-sm text-gray-500">
+        <a href="#features" class="hidden sm:inline hover:text-gray-900 transition">Features</a>
+        <a href="#download" class="hidden sm:inline hover:text-gray-900 transition">Download</a>
+        <a href="/en/" class="font-medium hover:text-gray-900 transition" title="English">EN</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-5xl mx-auto text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
+        Entdecke die <span class="gradient-text">besten Gerichte</span>
+      </h1>
+      <p class="text-lg sm:text-xl text-gray-500 max-w-2xl mx-auto mb-10">
+        Bewerte deine Lieblingsgerichte, entdecke Empfehlungen von Freunden und
+        baue deine persönliche Bucket&nbsp;List auf.
+      </p>
+      <div id="download" class="flex flex-col sm:flex-row items-center justify-center gap-4">
+        <!-- TODO: Replace # with actual App Store URL -->
+        <a href="#" class="inline-flex items-center justify-center h-[52px] transition hover:opacity-80">
+          <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+               alt="Download im App Store" class="h-[44px]">
+        </a>
+        <!-- TODO: Replace # with actual Google Play URL -->
+        <a href="#" class="inline-flex items-center justify-center h-[52px] transition hover:opacity-80">
+          <img src="https://play.google.com/intl/en_us/badges/static/images/badges/de_badge_web_generic.png"
+               alt="Jetzt bei Google Play" class="h-[64px]">
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20 px-6 bg-gray-50">
+    <div class="max-w-5xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-14">Was ist <span class="gradient-text">Snaxta</span>?</h2>
+      <div class="grid sm:grid-cols-3 gap-10">
+        <div class="text-center">
+          <div class="gradient-bg w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/></svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Bewerten</h3>
+          <p class="text-gray-500 text-sm">Halte fest, was du gegessen hast &ndash; mit Foto, Rating und Notizen.</p>
+        </div>
+        <div class="text-center">
+          <div class="gradient-bg w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Entdecken</h3>
+          <p class="text-gray-500 text-sm">Sieh, was deine Freunde empfehlen und lass dich inspirieren.</p>
+        </div>
+        <div class="text-center">
+          <div class="gradient-bg w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-5">
+            <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/></svg>
+          </div>
+          <h3 class="font-semibold text-lg mb-2">Bucket List</h3>
+          <p class="text-gray-500 text-sm">Merke dir Gerichte, die du noch probieren willst.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 px-6">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">Bereit?</h2>
+      <p class="text-gray-500 mb-8">Lade Snaxta kostenlos herunter und starte deine Food-Journey.</p>
+      <a href="#download" class="inline-block gradient-bg text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition">
+        Jetzt herunterladen
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-100 py-10 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <span>&copy; 2026 Snaxta. Alle Rechte vorbehalten.</span>
+      <div class="flex gap-6">
+        <a href="/agb" class="hover:text-gray-600 transition">AGB</a>
+        <a href="/datenschutz" class="hover:text-gray-600 transition">Datenschutz</a>
+        <a href="/impressum" class="hover:text-gray-600 transition">Impressum</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

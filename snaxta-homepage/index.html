@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snaxta</title>
+  <link rel="icon" type="image/png" href="/assets/img/app-icon.png">
+  <script>
+    var lang = (navigator.language || navigator.userLanguage || 'de').slice(0, 2);
+    var target = lang === 'en' ? 'en/' : 'de/';
+    window.location.replace(target);
+  </script>
+</head>
+<body>
+  <noscript>
+    <p><a href="/de/">Deutsch</a> | <a href="/en/">English</a></p>
+  </noscript>
+</body>
+</html>

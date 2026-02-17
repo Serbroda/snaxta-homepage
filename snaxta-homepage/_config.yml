@@ -1,0 +1,11 @@
+# GitHub Pages configuration for Snaxta website
+# When moving to own repo: copy this entire docs/ folder as repo root.
+
+title: Snaxta
+url: "https://snaxta.de"
+
+# Required: serve .well-known directory (for Universal Links / App Links)
+include: [".well-known"]
+
+# Disable Jekyll processing for JSON files
+exclude: []
