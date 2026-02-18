@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snaxta - Reset password</title>
+  <meta name="description" content="Reset your Snaxta password securely.">
+  <link rel="icon" type="image/png" href="/snaxta-homepage/assets/img/app-icon.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FF5252',
+            'brand-end': '#FF9A5C',
+            ink: '#101318'
+          },
+          boxShadow: {
+            glow: '0 20px 60px -35px rgba(255, 82, 82, 0.55)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-bg { background: linear-gradient(135deg, #FF5252, #FF9A5C); }
+    .mesh {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 82, 82, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(255, 154, 92, 0.2), transparent 40%),
+        radial-gradient(circle at 60% 90%, rgba(16, 19, 24, 0.08), transparent 45%),
+        #f9fafb;
+    }
+  </style>
+</head>
+<body class="mesh min-h-screen text-ink antialiased">
+  <main class="min-h-screen flex items-center justify-center px-6 py-16">
+    <div class="w-full max-w-lg bg-white/90 backdrop-blur rounded-3xl shadow-glow border border-white/60 p-8 sm:p-10">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-400">Snaxta</p>
+          <h1 class="text-3xl font-semibold mt-2">Reset password</h1>
+        </div>
+        <img src="/snaxta-homepage/assets/img/app-icon.png" alt="Snaxta" class="h-12 w-12">
+      </div>
+
+      <div id="status" class="mb-6 text-sm text-gray-500">
+        Checking your link...
+      </div>
+
+      <form id="reset-form" class="space-y-4" novalidate>
+        <div>
+          <label for="password" class="block text-sm font-medium text-gray-700">New password</label>
+          <input
+            id="password"
+            name="password"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            class="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm shadow-sm focus:border-brand focus:ring-2 focus:ring-brand/20"
+            placeholder="At least 8 characters"
+            disabled
+            required
+          >
+        </div>
+        <div>
+          <label for="confirm-password" class="block text-sm font-medium text-gray-700">Confirm password</label>
+          <input
+            id="confirm-password"
+            name="confirm-password"
+            type="password"
+            autocomplete="new-password"
+            minlength="8"
+            class="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm shadow-sm focus:border-brand focus:ring-2 focus:ring-brand/20"
+            placeholder="Repeat password"
+            disabled
+            required
+          >
+        </div>
+        <button
+          id="submit-btn"
+          type="submit"
+          class="w-full gradient-bg text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transition disabled:opacity-60 disabled:cursor-not-allowed"
+          disabled
+        >
+          Update password
+        </button>
+      </form>
+
+      <p class="text-xs text-gray-400 mt-6">
+        This link expires after a short time. If it is expired, start the reset again.
+      </p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.5/dist/umd/supabase.min.js"></script>
+  <script>
+    const supabaseUrl = 'https://wwyqyvumxltikvxtggft.supabase.co';
+    const supabaseAnonKey = 'sb_publishable_P9PB34rtuTLuBShDBfwH7w_RQWBMFGg';
+    const client = window.supabase.createClient(supabaseUrl, supabaseAnonKey, {
+      auth: { persistSession: false, autoRefreshToken: false }
+    });
+
+    const statusEl = document.getElementById('status');
+    const formEl = document.getElementById('reset-form');
+    const passwordEl = document.getElementById('password');
+    const confirmEl = document.getElementById('confirm-password');
+    const submitEl = document.getElementById('submit-btn');
+
+    const setStatus = (message, tone = 'text-gray-500') => {
+      statusEl.className = `mb-6 text-sm ${tone}`;
+      statusEl.textContent = message;
+    };
+
+    const enableForm = (enabled) => {
+      passwordEl.disabled = !enabled;
+      confirmEl.disabled = !enabled;
+      submitEl.disabled = !enabled;
+    };
+
+    const sanitizeUrl = () => {
+      if (window.history.replaceState) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+    };
+
+    const init = async () => {
+      const params = new URLSearchParams(window.location.search);
+      const type = params.get('type');
+      const accessToken = params.get('access_token');
+      const refreshToken = params.get('refresh_token');
+      const code = params.get('code');
+
+      if (type !== 'recovery') {
+        setStatus('Invalid link. Please start the reset again.', 'text-red-500');
+        return;
+      }
+
+      try {
+        if (code) {
+          const { error } = await client.auth.exchangeCodeForSession(code);
+          if (error) throw error;
+        } else if (accessToken && refreshToken) {
+          const { error } = await client.auth.setSession({
+            access_token: accessToken,
+            refresh_token: refreshToken
+          });
+          if (error) throw error;
+        } else {
+          setStatus('This link does not include valid tokens.', 'text-red-500');
+          return;
+        }
+
+        sanitizeUrl();
+        enableForm(true);
+        setStatus('Please set your new password now.', 'text-emerald-600');
+      } catch (error) {
+        setStatus(`Reset failed: ${error.message || 'Unknown error'}`, 'text-red-500');
+      }
+    };
+
+    formEl.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      const password = passwordEl.value.trim();
+      const confirmation = confirmEl.value.trim();
+
+      if (password.length < 8) {
+        setStatus('Please use at least 8 characters.', 'text-red-500');
+        return;
+      }
+
+      if (password !== confirmation) {
+        setStatus('Passwords do not match.', 'text-red-500');
+        return;
+      }
+
+      submitEl.disabled = true;
+      setStatus('Updating password...', 'text-gray-500');
+
+      const { error } = await client.auth.updateUser({ password });
+      if (error) {
+        submitEl.disabled = false;
+        setStatus(`Update failed: ${error.message}`, 'text-red-500');
+        return;
+      }
+
+      setStatus('Your password has been updated. You can close this window now.', 'text-emerald-600');
+      formEl.reset();
+      enableForm(false);
+    });
+
+    init();
+  </script>
+</body>
+</html>
