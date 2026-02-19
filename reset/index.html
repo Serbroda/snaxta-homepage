@@ -130,18 +130,15 @@
       const hash = new URLSearchParams(window.location.hash.replace('#', '?'));
       return {
         type: search.get('type') || hash.get('type'),
-        code: search.get('code') || hash.get('code'),
-        accessToken: search.get('access_token') || hash.get('access_token'),
-        refreshToken: search.get('refresh_token') || hash.get('refresh_token'),
+        tokenHash: search.get('token_hash') || hash.get('token_hash'),
       };
     };
 
     const init = () => {
-      const { type, code, accessToken, refreshToken } = getParams();
+      const { type, tokenHash } = getParams();
 
-      // PKCE flow with code parameter
-      if (type === 'recovery' && code) {
-        client.auth.exchangeCodeForSession(code).then(({ error }) => {
+      if (type === 'recovery' && tokenHash) {
+        client.auth.verifyOtp({ token_hash: tokenHash, type: 'recovery' }).then(({ error }) => {
           if (error) {
             setStatus(`Reset failed: ${error.message}`, 'text-red-500');
           } else {
@@ -154,7 +151,6 @@
       }
 
       // Implicit flow: Supabase JS auto-detects the hash fragment.
-      // Listen for the PASSWORD_RECOVERY event.
       if (window.location.hash) {
         client.auth.onAuthStateChange((event) => {
           if (event === 'PASSWORD_RECOVERY') {

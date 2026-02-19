@@ -112,7 +112,7 @@
       const hash = new URLSearchParams(window.location.hash.replace('#', '?'));
       return {
         type: search.get('type') || hash.get('type'),
-        code: search.get('code') || hash.get('code'),
+        tokenHash: search.get('token_hash') || hash.get('token_hash'),
       };
     };
 
@@ -127,11 +127,10 @@
     };
 
     const init = () => {
-      const { type, code } = getParams();
+      const { type, tokenHash } = getParams();
 
-      // PKCE flow with code parameter
-      if ((type === 'signup' || type === 'email_change') && code) {
-        client.auth.exchangeCodeForSession(code).then(({ error }) => {
+      if ((type === 'signup' || type === 'email_change') && tokenHash) {
+        client.auth.verifyOtp({ token_hash: tokenHash, type: type }).then(({ error }) => {
           if (error) fail(`Confirmation failed: ${error.message}`);
           else success();
         });
