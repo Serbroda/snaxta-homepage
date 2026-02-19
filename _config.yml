@@ -2,7 +2,7 @@
 # When moving to own repo: copy this entire docs/ folder as repo root.
 
 title: Snaxta
-url: "https://snaxta.de"
+url: "https://www.snaxta.app"
 
 # Required: serve .well-known directory (for Universal Links / App Links)
 include: [".well-known"]
