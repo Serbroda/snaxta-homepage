@@ -99,7 +99,7 @@
     const supabaseUrl = 'https://wwyqyvumxltikvxtggft.supabase.co';
     const supabaseAnonKey = 'sb_publishable_P9PB34rtuTLuBShDBfwH7w_RQWBMFGg';
     const client = window.supabase.createClient(supabaseUrl, supabaseAnonKey, {
-      auth: { persistSession: false, autoRefreshToken: false }
+      auth: { persistSession: true, autoRefreshToken: false }
     });
 
     const statusEl = document.getElementById('status');
@@ -125,39 +125,48 @@
       }
     };
 
-    const init = async () => {
-      const params = new URLSearchParams(window.location.search);
-      const type = params.get('type');
-      const accessToken = params.get('access_token');
-      const refreshToken = params.get('refresh_token');
-      const code = params.get('code');
+    const getParams = () => {
+      const search = new URLSearchParams(window.location.search);
+      const hash = new URLSearchParams(window.location.hash.replace('#', '?'));
+      return {
+        type: search.get('type') || hash.get('type'),
+        code: search.get('code') || hash.get('code'),
+        accessToken: search.get('access_token') || hash.get('access_token'),
+        refreshToken: search.get('refresh_token') || hash.get('refresh_token'),
+      };
+    };
 
-      if (type !== 'recovery') {
-        setStatus('Invalid link. Please start the reset again.', 'text-red-500');
+    const init = () => {
+      const { type, code, accessToken, refreshToken } = getParams();
+
+      // PKCE flow with code parameter
+      if (type === 'recovery' && code) {
+        client.auth.exchangeCodeForSession(code).then(({ error }) => {
+          if (error) {
+            setStatus(`Reset failed: ${error.message}`, 'text-red-500');
+          } else {
+            sanitizeUrl();
+            enableForm(true);
+            setStatus('Please set your new password now.', 'text-emerald-600');
+          }
+        });
         return;
       }
 
-      try {
-        if (code) {
-          const { error } = await client.auth.exchangeCodeForSession(code);
-          if (error) throw error;
-        } else if (accessToken && refreshToken) {
-          const { error } = await client.auth.setSession({
-            access_token: accessToken,
-            refresh_token: refreshToken
-          });
-          if (error) throw error;
-        } else {
-          setStatus('This link does not include valid tokens.', 'text-red-500');
-          return;
-        }
-
-        sanitizeUrl();
-        enableForm(true);
-        setStatus('Please set your new password now.', 'text-emerald-600');
-      } catch (error) {
-        setStatus(`Reset failed: ${error.message || 'Unknown error'}`, 'text-red-500');
+      // Implicit flow: Supabase JS auto-detects the hash fragment.
+      // Listen for the PASSWORD_RECOVERY event.
+      if (window.location.hash) {
+        client.auth.onAuthStateChange((event) => {
+          if (event === 'PASSWORD_RECOVERY') {
+            sanitizeUrl();
+            enableForm(true);
+            setStatus('Please set your new password now.', 'text-emerald-600');
+          }
+        });
+        return;
       }
+
+      setStatus('Invalid link. Please start the reset again.', 'text-red-500');
     };
 
     formEl.addEventListener('submit', async (event) => {

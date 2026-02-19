@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snaxta - Confirm email</title>
+  <meta name="description" content="Confirm your Snaxta email address.">
+  <link rel="icon" type="image/png" href="/assets/img/app-icon.png">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FF5252',
+            'brand-end': '#FF9A5C',
+            ink: '#101318'
+          },
+          boxShadow: {
+            glow: '0 20px 60px -35px rgba(255, 82, 82, 0.55)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-bg { background: linear-gradient(135deg, #FF5252, #FF9A5C); }
+    .mesh {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 82, 82, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(255, 154, 92, 0.2), transparent 40%),
+        radial-gradient(circle at 60% 90%, rgba(16, 19, 24, 0.08), transparent 45%),
+        #f9fafb;
+    }
+  </style>
+</head>
+<body class="mesh min-h-screen text-ink antialiased">
+  <main class="min-h-screen flex items-center justify-center px-6 py-16">
+    <div class="w-full max-w-lg bg-white/90 backdrop-blur rounded-3xl shadow-glow border border-white/60 p-8 sm:p-10">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <p class="text-xs uppercase tracking-[0.3em] text-gray-400">Snaxta</p>
+          <h1 class="text-3xl font-semibold mt-2">Confirm email</h1>
+        </div>
+        <img src="/assets/img/app-icon.png" alt="Snaxta" class="h-12 w-12">
+      </div>
+
+      <div id="status" class="text-sm text-gray-500">
+        Verifying your email...
+      </div>
+
+      <!-- spinner -->
+      <div id="spinner" class="flex justify-center py-8">
+        <svg class="animate-spin h-8 w-8 text-brand" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+        </svg>
+      </div>
+
+      <!-- success icon (hidden by default) -->
+      <div id="success-icon" class="hidden flex-col items-center py-8 gap-3">
+        <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/>
+          </svg>
+        </div>
+      </div>
+
+      <!-- error icon (hidden by default) -->
+      <div id="error-icon" class="hidden flex-col items-center py-8 gap-3">
+        <div class="bg-red-100 w-16 h-16 rounded-full flex items-center justify-center">
+          <svg class="w-8 h-8 text-red-500" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+          </svg>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-400 mt-6">
+        This link expires after a short time. If it is expired, request a new confirmation email in the app.
+      </p>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.43.5/dist/umd/supabase.min.js"></script>
+  <script>
+    const supabaseUrl = 'https://wwyqyvumxltikvxtggft.supabase.co';
+    const supabaseAnonKey = 'sb_publishable_P9PB34rtuTLuBShDBfwH7w_RQWBMFGg';
+    const client = window.supabase.createClient(supabaseUrl, supabaseAnonKey, {
+      auth: { persistSession: true, autoRefreshToken: false }
+    });
+
+    const statusEl = document.getElementById('status');
+    const spinnerEl = document.getElementById('spinner');
+    const successEl = document.getElementById('success-icon');
+    const errorEl = document.getElementById('error-icon');
+
+    const show = (icon) => {
+      spinnerEl.classList.add('hidden');
+      successEl.classList.add('hidden');
+      errorEl.classList.add('hidden');
+      icon.classList.remove('hidden');
+      icon.classList.add('flex');
+    };
+
+    const setStatus = (message, tone = 'text-gray-500') => {
+      statusEl.className = `text-sm ${tone}`;
+      statusEl.textContent = message;
+    };
+
+    const getParams = () => {
+      const search = new URLSearchParams(window.location.search);
+      const hash = new URLSearchParams(window.location.hash.replace('#', '?'));
+      return {
+        type: search.get('type') || hash.get('type'),
+        code: search.get('code') || hash.get('code'),
+      };
+    };
+
+    const success = () => {
+      show(successEl);
+      setStatus('Your email has been confirmed. You can close this window now.', 'text-emerald-600');
+    };
+
+    const fail = (message) => {
+      show(errorEl);
+      setStatus(message, 'text-red-500');
+    };
+
+    const init = () => {
+      const { type, code } = getParams();
+
+      // PKCE flow with code parameter
+      if ((type === 'signup' || type === 'email_change') && code) {
+        client.auth.exchangeCodeForSession(code).then(({ error }) => {
+          if (error) fail(`Confirmation failed: ${error.message}`);
+          else success();
+        });
+        return;
+      }
+
+      // Implicit flow: Supabase JS auto-detects the hash fragment.
+      if (window.location.hash) {
+        client.auth.onAuthStateChange((event) => {
+          if (event === 'SIGNED_IN') success();
+        });
+        return;
+      }
+
+      fail('Invalid link. Please request a new confirmation email.');
+    };
+
+    init();
+  </script>
+</body>
+</html>
