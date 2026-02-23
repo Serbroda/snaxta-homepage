@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snaxta – Restaurant beanspruchen</title>
+  <meta name="description" content="Beanspruche dein Restaurant auf Snaxta und verwalte dein Profil, deine Speisekarte und mehr.">
+  <meta property="og:title" content="Snaxta – Restaurant beanspruchen">
+  <meta property="og:description" content="Beanspruche dein Restaurant auf Snaxta und verwalte dein Profil.">
+  <meta property="og:image" content="https://www.snaxta.app/assets/img/app-icon.png">
+  <meta property="og:url" content="https://www.snaxta.app/claim/de/">
+  <link rel="alternate" hreflang="en" href="https://www.snaxta.app/claim/en/">
+  <link rel="alternate" hreflang="de" href="https://www.snaxta.app/claim/de/">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#FF5252', 'brand-end': '#FF9A5C' } } }
+    }
+  </script>
+  <style>
+    .gradient-text { background: linear-gradient(135deg, #FF5252, #FF9A5C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-bg { background: linear-gradient(135deg, #FF5252, #FF9A5C); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/de/"><img src="/assets/img/logo.png" alt="Snaxta" class="h-7"></a>
+      <div class="flex items-center gap-6 text-sm text-gray-500">
+        <a href="/de/" class="hover:text-gray-900 transition">Startseite</a>
+        <a href="/claim/en/" class="font-medium hover:text-gray-900 transition" title="English">EN</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
+        Dein Restaurant auf <span class="gradient-text">Snaxta</span>
+      </h1>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+        Nutzer bewerten Gerichte in deinem Restaurant. Beanspruche dein Profil und
+        zeige dich von deiner besten Seite.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-12">So funktioniert's</h2>
+      <div class="space-y-8">
+        <div class="flex gap-5">
+          <div class="gradient-bg text-white font-bold w-10 h-10 rounded-full flex items-center justify-center shrink-0">1</div>
+          <div>
+            <h3 class="font-semibold text-lg">Restaurant finden</h3>
+            <p class="text-gray-500 text-sm mt-1">Suche dein Restaurant in der Snaxta-App und tippe auf "Beanspruchen".</p>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="gradient-bg text-white font-bold w-10 h-10 rounded-full flex items-center justify-center shrink-0">2</div>
+          <div>
+            <h3 class="font-semibold text-lg">Verifizierung</h3>
+            <p class="text-gray-500 text-sm mt-1">Wir prüfen, ob du der Inhaber bist. Dies kann einige Tage dauern.</p>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="gradient-bg text-white font-bold w-10 h-10 rounded-full flex items-center justify-center shrink-0">3</div>
+          <div>
+            <h3 class="font-semibold text-lg">Profil verwalten</h3>
+            <p class="text-gray-500 text-sm mt-1">Nach der Verifizierung kannst du dein Restaurant-Profil pflegen.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free vs Premium -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-12">Was ist inklusive?</h2>
+
+      <!-- Free -->
+      <div class="border border-gray-200 rounded-2xl p-8 mb-6">
+        <h3 class="text-xl font-bold mb-1">Kostenlos</h3>
+        <p class="text-gray-400 text-sm mb-6">Alles, was du brauchst, um loszulegen</p>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Restaurant-Profil beanspruchen und verifizieren
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Beschreibung und Webseite hinterlegen
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Speisekarte pflegen
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Profilbild und Banner hochladen
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Bewertungen und Statistiken einsehen
+          </li>
+        </ul>
+      </div>
+
+      <!-- Premium -->
+      <div class="border-2 border-brand rounded-2xl p-8 relative">
+        <span class="absolute -top-3 left-8 gradient-bg text-white text-xs font-semibold px-3 py-1 rounded-full">Premium</span>
+        <h3 class="text-xl font-bold mb-1">Premium</h3>
+        <p class="text-gray-400 text-sm mb-6">Mehr Sichtbarkeit und Kontrolle</p>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Alles aus dem kostenlosen Plan</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong>Verifiziertes Badge</strong> &ndash; Vertrauens-Häkchen am Restaurant-Namen</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong>Speisekarten-Fotos</strong> &ndash; Bilder zu jedem Gericht hinzufügen</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong>Top-Reviews anpinnen</strong> &ndash; Hebe die besten Bewertungen hervor</span>
+          </li>
+        </ul>
+        <p class="text-gray-400 text-xs mt-6">Preise und Verfügbarkeit werden in Kürze bekannt gegeben.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Fragen?</h2>
+      <p class="text-gray-500 mb-6">Wir helfen dir gerne weiter.</p>
+      <a href="mailto:claim@snaxta.com" class="inline-block gradient-bg text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition">
+        claim@snaxta.com
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-100 py-10 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <span>&copy; 2026 Snaxta. Alle Rechte vorbehalten.</span>
+      <div class="flex gap-6">
+        <a href="/agb" class="hover:text-gray-600 transition">AGB</a>
+        <a href="/datenschutz" class="hover:text-gray-600 transition">Datenschutz</a>
+        <a href="/impressum" class="hover:text-gray-600 transition">Impressum</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

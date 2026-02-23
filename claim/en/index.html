@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snaxta – Claim your restaurant</title>
+  <meta name="description" content="Claim your restaurant on Snaxta and manage your profile, menu and more.">
+  <meta property="og:title" content="Snaxta – Claim your restaurant">
+  <meta property="og:description" content="Claim your restaurant on Snaxta and manage your profile.">
+  <meta property="og:image" content="https://www.snaxta.app/assets/img/app-icon.png">
+  <meta property="og:url" content="https://www.snaxta.app/claim/en/">
+  <link rel="alternate" hreflang="de" href="https://www.snaxta.app/claim/de/">
+  <link rel="alternate" hreflang="en" href="https://www.snaxta.app/claim/en/">
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: { extend: { colors: { brand: '#FF5252', 'brand-end': '#FF9A5C' } } }
+    }
+  </script>
+  <style>
+    .gradient-text { background: linear-gradient(135deg, #FF5252, #FF9A5C); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .gradient-bg { background: linear-gradient(135deg, #FF5252, #FF9A5C); }
+  </style>
+</head>
+<body class="bg-white text-gray-900 antialiased">
+
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full bg-white/80 backdrop-blur-md z-50 border-b border-gray-100">
+    <div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/en/"><img src="/assets/img/logo.png" alt="Snaxta" class="h-7"></a>
+      <div class="flex items-center gap-6 text-sm text-gray-500">
+        <a href="/en/" class="hover:text-gray-900 transition">Home</a>
+        <a href="/claim/de/" class="font-medium hover:text-gray-900 transition" title="Deutsch">DE</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-16 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+      <h1 class="text-4xl sm:text-5xl font-extrabold tracking-tight mb-6">
+        Your restaurant on <span class="gradient-text">Snaxta</span>
+      </h1>
+      <p class="text-lg text-gray-500 max-w-2xl mx-auto">
+        Users rate dishes at your restaurant. Claim your profile and
+        put your best foot forward.
+      </p>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-12">How it works</h2>
+      <div class="space-y-8">
+        <div class="flex gap-5">
+          <div class="gradient-bg text-white font-bold w-10 h-10 rounded-full flex items-center justify-center shrink-0">1</div>
+          <div>
+            <h3 class="font-semibold text-lg">Find your restaurant</h3>
+            <p class="text-gray-500 text-sm mt-1">Search for your restaurant in the Snaxta app and tap "Claim".</p>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="gradient-bg text-white font-bold w-10 h-10 rounded-full flex items-center justify-center shrink-0">2</div>
+          <div>
+            <h3 class="font-semibold text-lg">Verification</h3>
+            <p class="text-gray-500 text-sm mt-1">We'll verify that you're the owner. This may take a few days.</p>
+          </div>
+        </div>
+        <div class="flex gap-5">
+          <div class="gradient-bg text-white font-bold w-10 h-10 rounded-full flex items-center justify-center shrink-0">3</div>
+          <div>
+            <h3 class="font-semibold text-lg">Manage your profile</h3>
+            <p class="text-gray-500 text-sm mt-1">Once verified, you can manage your restaurant profile.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Free vs Premium -->
+  <section class="py-16 px-6">
+    <div class="max-w-3xl mx-auto">
+      <h2 class="text-2xl font-bold text-center mb-12">What's included?</h2>
+
+      <!-- Free -->
+      <div class="border border-gray-200 rounded-2xl p-8 mb-6">
+        <h3 class="text-xl font-bold mb-1">Free</h3>
+        <p class="text-gray-400 text-sm mb-6">Everything you need to get started</p>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Claim and verify your restaurant profile
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Add description and website
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Manage your menu
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            Upload profile picture and banner
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-green-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            View ratings and statistics
+          </li>
+        </ul>
+      </div>
+
+      <!-- Premium -->
+      <div class="border-2 border-brand rounded-2xl p-8 relative">
+        <span class="absolute -top-3 left-8 gradient-bg text-white text-xs font-semibold px-3 py-1 rounded-full">Premium</span>
+        <h3 class="text-xl font-bold mb-1">Premium</h3>
+        <p class="text-gray-400 text-sm mb-6">More visibility and control</p>
+        <ul class="space-y-3 text-sm">
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span>Everything in the free plan</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong>Verified badge</strong> &ndash; Trust checkmark on your restaurant name</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong>Menu photos</strong> &ndash; Add images to each dish</span>
+          </li>
+          <li class="flex items-start gap-3">
+            <svg class="w-5 h-5 text-brand shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7"/></svg>
+            <span><strong>Pin top reviews</strong> &ndash; Highlight your best ratings</span>
+          </li>
+        </ul>
+        <p class="text-gray-400 text-xs mt-6">Pricing and availability will be announced soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="py-16 px-6 bg-gray-50">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-2xl font-bold mb-4">Questions?</h2>
+      <p class="text-gray-500 mb-6">We're happy to help.</p>
+      <a href="mailto:claim@snaxta.com" class="inline-block gradient-bg text-white font-semibold px-8 py-3 rounded-full shadow-lg hover:shadow-xl transition">
+        claim@snaxta.com
+      </a>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="border-t border-gray-100 py-10 px-6">
+    <div class="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-sm text-gray-400">
+      <span>&copy; 2026 Snaxta. All rights reserved.</span>
+      <div class="flex gap-6">
+        <a href="/terms" class="hover:text-gray-600 transition">Terms</a>
+        <a href="/privacy" class="hover:text-gray-600 transition">Privacy</a>
+        <a href="/legal-notice" class="hover:text-gray-600 transition">Legal Notice</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
