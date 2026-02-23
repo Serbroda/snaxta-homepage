@@ -1,0 +1,90 @@
+---
+permalink: /404.html
+---
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Snaxta</title>
+  <link rel="icon" type="image/svg+xml" href="/assets/img/favicon.svg">
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: '#FF5252',
+            'brand-end': '#FF9A5C',
+            ink: '#101318'
+          },
+          boxShadow: {
+            glow: '0 20px 60px -35px rgba(255, 82, 82, 0.55)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .gradient-bg { background: linear-gradient(135deg, #FF5252, #FF9A5C); }
+    .mesh {
+      background:
+        radial-gradient(circle at 15% 20%, rgba(255, 82, 82, 0.18), transparent 45%),
+        radial-gradient(circle at 85% 10%, rgba(255, 154, 92, 0.2), transparent 40%),
+        radial-gradient(circle at 60% 90%, rgba(16, 19, 24, 0.08), transparent 45%),
+        #f9fafb;
+    }
+  </style>
+</head>
+<body class="mesh min-h-screen text-ink antialiased">
+  <main class="min-h-screen flex items-center justify-center px-6 py-16">
+
+    <!-- Review deep link fallback -->
+    <div id="review-card" class="hidden w-full max-w-lg bg-white/90 backdrop-blur rounded-3xl shadow-glow border border-white/60 p-8 sm:p-10 text-center">
+      <div class="flex justify-center mb-6">
+        <img src="/assets/img/logo.png" alt="Snaxta" class="h-7">
+      </div>
+      <div class="gradient-bg w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-6">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl font-semibold mb-2">Review in der App ansehen</h1>
+      <p class="text-gray-500 mb-8">Lade dir Snaxta herunter, um diesen Review und viele weitere Food-Bewertungen zu entdecken.</p>
+      <div class="flex flex-col sm:flex-row gap-3 justify-center">
+        <a href="https://apps.apple.com/app/snaxta/id6746393752" class="inline-flex items-center justify-center gap-2 gradient-bg text-white font-semibold rounded-xl px-6 py-3 hover:opacity-90 transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=de.snaxta.snaxta" class="inline-flex items-center justify-center gap-2 bg-ink text-white font-semibold rounded-xl px-6 py-3 hover:opacity-90 transition">
+          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92zm10.89 10.893l2.302 2.302-10.937 6.333 8.635-8.635zm3.199-3.199l2.807 1.626a1 1 0 010 1.732l-2.807 1.626L15.206 12l2.492-2.492zM5.864 2.658L16.8 8.99l-2.302 2.302-8.634-8.634z"/></svg>
+          Google Play
+        </a>
+      </div>
+      <p class="text-xs text-gray-400 mt-8">
+        Falls du die App bereits installiert hast, sollte sich der Review automatisch darin öffnen.
+      </p>
+    </div>
+
+    <!-- Generic 404 -->
+    <div id="notfound-card" class="hidden w-full max-w-lg bg-white/90 backdrop-blur rounded-3xl shadow-glow border border-white/60 p-8 sm:p-10 text-center">
+      <div class="flex justify-center mb-6">
+        <img src="/assets/img/logo.png" alt="Snaxta" class="h-7">
+      </div>
+      <h1 class="text-3xl font-semibold mb-2">404</h1>
+      <p class="text-gray-500 mb-8">Diese Seite existiert nicht.</p>
+      <a href="/" class="inline-flex items-center justify-center gradient-bg text-white font-semibold rounded-xl px-6 py-3 hover:opacity-90 transition">
+        Zur Startseite
+      </a>
+    </div>
+
+  </main>
+
+  <script>
+    const isReview = window.location.pathname.startsWith('/review/');
+    document.getElementById(isReview ? 'review-card' : 'notfound-card').classList.remove('hidden');
+    if (isReview) document.title = 'Snaxta - Review ansehen';
+  </script>
+</body>
+</html>
