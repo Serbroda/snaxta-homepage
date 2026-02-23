@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "de.snaxta.snaxta",
+      "sha256_cert_fingerprints": [
+        "01:3A:F3:BD:7F:21:32:9F:5C:BA:6A:43:DD:9B:CD:BF:CD:81:DF:C3:4C:95:14:2E:E6:A6:D0:3A:09:EC:4E:A0"
+      ]
+    }
+  }
+]

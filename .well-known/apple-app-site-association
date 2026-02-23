@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "7H29W9BYZ4.de.snaxta.snaxta",
+        "paths": ["/review/*"]
+      }
+    ]
+  }
+}
